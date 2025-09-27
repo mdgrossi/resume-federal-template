@@ -1,0 +1,381 @@
+% =========================================================================== %
+%
+% DOCUMENT DEFINITION
+%
+% =========================================================================== %
+
+\documentclass[letterpaper,10pt,final]{moderncv}
+
+% =========================================================================== %
+%
+% RESUME THEME
+%
+% Color options:
+%     black, blue (default), burgundy, green, grey, orange, purple, red
+% Style options:
+%     casual (default), classic, banking, oldstyle, fancy
+%
+% =========================================================================== %
+
+\moderncvtheme[blue]{banking}
+
+% character encoding
+\usepackage[utf8]{inputenc}		
+% \usepackage[USenglish]{isodate}
+
+% Page margins and column widths
+\usepackage[margin=0.6in]{geometry}
+\setlength{\hintscolumnwidth}{3cm}
+\usepackage{etoolbox, changepage}
+\patchcmd{\makehead}% <cmd>
+  {0.8\textwidth}% <search>
+  {\linewidth}% <replace>
+  {}{}% <success><failure>
+\let\originalrecomputecvlengths\recomputecvlengths
+  \renewcommand*{\recomputecvlengths}{%
+    \originalrecomputecvlengths%
+      \setlength{\quotewidth}{0.94\textwidth}}
+%\recomputelengths
+\usepackage[none]{hyphenat}  % Prevents hyphenation
+\usepackage{setspace} % Line spacing, if desired
+\usepackage{graphicx} % For bars
+\usepackage{multicol} % Multiple columns
+\usepackage{enumitem} % Adjust bulleted list spacing (http://ctan.org/pkg/enumitem)
+
+% Page numbers
+$if(cv-page-numbers)$
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\nopagenumbers{}
+\rfoot{\addressfont\itshape\textcolor{gray}{$author.lastname$ | \thepage\ of \pageref{LastPage}}}
+$else$
+\nopagenumbers{}
+$endif$
+
+% cventry spacing
+\newcommand{\cvspace}{0.6em}
+
+% Define tightlist
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{8pt}\setlength{\parskip}{0pt}}
+
+% Alternative cvitem spacing
+\makeatletter
+\newcommand*{\mycvitem}[3][0.25em]{%
+  \@initializelength{\mydefwidth}\settowidth{\mydefwidth}{\hintstyle{#2} \hspace{5pt}}
+  \@initializelength{\myitawidth}\setlength{\myitawidth}{\maincolumnwidth-\separatorcolumnwidth-\mydefwidth}
+  \ifthenelse{\equal{#2}{}}{}{\hintstyle{#2} \hspace{5pt}}{\begin{minipage}[t]{\myitawidth}\raggedright #3\end{minipage}}% 
+  \par\addvspace{#1}}
+\makeatother
+
+% Exclude cover letter
+\newif\iflong
+\longtrue % switch to false in short version
+\newcommand{\coverLetter}[1]{\iflong #1\fi}
+
+% Header information
+\firstname{$author.firstname$}
+$if(author.suffix)$
+\familyname{$author.lastname$\textcolor{gray}{, $author.suffix$}}
+$else$
+\familyname{$author.lastname$}
+$endif$
+$if(subtitle)$
+\title{$subtitle$}
+$endif$
+$if(contact.address)$
+\address{$contact.address.line1$}{$contact.address.line2$}
+$endif$
+$if(contact.phone)$
+\phone{$contact.phone$}
+$endif$
+$if(contact.email)$
+\email{$contact.email$}
+$endif$
+$if(contact.linkedin)$
+\social[linkedin]{$contact.linkedin$}
+$endif$
+$if(contact.website)$
+\homepage{$contact.website$}
+$endif$
+$if(contact.github)$
+\social[github]{$contact.github$}
+$endif$
+$if(contact.orcid)$
+\social[orcid]{$contact.orcid$}
+$endif$
+$if(contact.researchgate)$
+\social[researchgate]{$contact.researchgate$}
+$endif$
+$if(contact.extracvinfo)$
+\extrainfo{$contact.extracvinfo$}
+$endif$
+
+\begin{document}
+
+\normalsize
+\makecvtitle
+
+$if(education)$
+$if(education.include-in-cv)$
+$if(education.cv-header)$
+\section{$education.cv-header$}
+$else$
+\section{Education}
+$endif$
+$for(education.items)$
+$if(education.items.minor)$
+\mycvitem[\cvspace]{$education.items.date$}{\textbf{$education.items.degree$}, $education.items.major$, $education.items.institution$, $education.items.location$ \newline Minor in $education.items.minor$ | 
+\textit{$education.items.extra$}}
+$else$
+$if(education.items.extra)$
+\mycvitem[\cvspace]{$education.items.date$}{\textbf{$education.items.degree$}, $education.items.major$, $education.items.institution$, $education.items.location$ \newline \textit{$education.items.extra$}}
+$else$
+\mycvitem[\cvspace]{$education.items.date$}{\textbf{$education.items.degree$}, $education.items.major$, $education.items.institution$, $education.items.location$}
+$endif$
+$endif$
+$endfor$
+$endif$
+$endif$
+
+$if(additional-education)$
+$if(additional-education.include-in-cv)$
+\vspace{\cvspace/2}
+$if(additional-education.cv-header)$
+\subsection{$additional-education.cv-header$}
+$else$
+\subsection{Additional Education}
+$endif$
+$for(additional-education.items)$
+\mycvitem[\cvspace]{$additional-education.items.date$}{$additional-education.items.major$ ($additional-education.items.extra$), $additional-education.items.institution$, $additional-education.items.location$}
+$endfor$
+$endif$
+$endif$
+
+$if(experience)$
+$if(experience.include-in-cv)$
+$if(experience.cv-header)$
+\section{$experience.cv-header$}
+$else$
+\section{Professional Experience}
+$endif$
+$for(experience.items)$
+$if(experience.items.role)$
+$if(experience.items.location)$
+$if(experience.items.extra)$
+\mycvitem[\cvspace]{$experience.items.date$}{\textbf{$experience.items.role$} | $experience.items.extra$ \newline $experience.items.employer$, $experience.items.location$}
+$else$
+\mycvitem[\cvspace]{$experience.items.date$}{\textbf{$experience.items.role$} \newline $experience.items.employer$, $experience.items.location$}
+$endif$
+$else$
+\mycvitem[\cvspace]{$experience.items.date$}{\textbf{$experience.items.role$} | $experience.items.extra$ \newline $experience.items.employer$}
+$endif$
+$endif$
+$endfor$
+$endif$
+$endif$
+
+$if(awards)$
+$if(awards.include-in-cv)$
+$if(awards.cv-header)$
+\section{$awards.cv-header$}
+$else$
+\section{Awards}
+$endif$
+$for(awards.items)$
+\mycvitem[\cvspace]{$awards.items.date$}{$awards.items.award$}
+$endfor$
+$endif$
+$endif$
+
+$if(memberships)$
+$if(memberships.include-in-cv)$
+$if(memberships.cv-header)$
+\section{$memberships.cv-header$}
+$else$
+\section{Memberships}
+$endif$
+\vspace*{0.25em}
+\begin{list}{}{\leftmargin=1em \itemindent=-1em \itemsep=0.25em}
+$for(memberships.items)$
+\item $memberships.items.entry$
+$endfor$
+\end{list}
+$endif$
+$endif$
+
+$if(fundingawarded)$
+$if(fundingawarded.include-in-cv)$
+$if(fundingawarded.cv-header)$
+\section{$fundingawarded.cv-header$}
+$else$
+\section{Funding Awarded}
+$endif$
+$for(fundingawarded.items)$
+\mycvitem[\cvspace]{$fundingawarded.items.date$}{$fundingawarded.items.entry$}
+$endfor$
+$endif$
+$endif$
+
+$if(research)$
+$if(research.include-in-cv)$
+$if(research.cv-header)$
+\section{$research.cv-header$}
+$else$
+\section{Research Experience}
+$endif$
+$for(research.items)$
+\mycvitem[\cvspace]{$research.items.date$}{$research.items.entry$}
+$endfor$
+$endif$
+$endif$
+
+$if(publications)$
+$if(publications.include-in-cv)$
+$if(publications.cv-header)$
+\section{$publications.cv-header$}
+$else$
+\section{Publications}
+$endif$
+$if(publications.peer-reviewed)$
+$if(publications.peer-reviewed.cv-subheader)$
+\subsection{$publications.peer-reviewed.cv-subheader$}
+$else$
+\subsection{Peer Reviewed}
+$endif$
+\vspace*{0.25em}
+\begin{list}{}{\leftmargin=1em \itemindent=-1em \itemsep=0.25em}
+$for(publications.peer-reviewed.items)$
+\item $publications.peer-reviewed.items.paper$
+$endfor$
+\end{list}
+$endif$
+
+$if(publications.proceedings)$
+$if(publications.proceedings.cv-subheader)$
+\subsection{$publications.proceedings.cv-subheader$}
+$else$
+\subsection{Proceedings}
+$endif$
+\vspace*{0.25em}
+\begin{list}{}{\leftmargin=1em \itemindent=-1em \itemsep=0.25em}
+$for(publications.proceedings.items)$
+\item $publications.proceedings.items.paper$
+$endfor$
+\end{list}
+$endif$
+
+$if(publications.tech-reports)$
+$if(publications.tech-reports.cv-subheader)$
+\subsection{$publications.tech-reports.cv-subheader$}
+$else$
+\subsection{Technical Reports}
+$endif$
+\vspace*{0.25em}
+\begin{list}{}{\leftmargin=1em \itemindent=-1em \itemsep=0.25em}
+$for(publications.tech-reports.items)$
+\item $publications.tech-reports.items.paper$
+$endfor$
+\end{list}
+$endif$
+
+$if(publications.cvtalks)$
+$if(publications.cvtalks.cv-subheader)$
+\subsection{$publications.cvtalks.cv-subheader$}
+$else$
+\subsection{Posters and Talks}
+$endif$
+\vspace*{0.25em}
+\begin{list}{}{\leftmargin=1em \itemindent=-1em \itemsep=0.25em}
+$for(publications.cvtalks.items)$
+\item $publications.cvtalks.items.paper$
+$endfor$
+\end{list}
+$else$
+$if(publications.talks)$
+$if(publications.cvtalks.cv-subheader)$
+\subsection{$publications.cvtalks.cv-subheader$}
+$else$
+\subsection{Posters and Talks}
+$endif$
+\vspace*{0.25em}
+\begin{list}{}{\leftmargin=1em \itemindent=-1em \itemsep=0.25em}
+$for(publications.talks.items)$
+\item $publications.talks.items.paper$
+$endfor$
+\end{list}
+$endif$
+$endif$
+
+$endif$
+$endif$
+
+$if(media)$
+$if(media.include-in-cv)$
+$if(media.cv-header)$
+\section{$media.cv-header$}
+$else$
+\section{Media Publicity}
+$endif$
+\begin{list}{}{\leftmargin=1em \itemindent=-1em \itemsep=0.25em}
+$for(media.items)$
+\item $media.items.entry$
+$endfor$
+\end{list}
+$endif$
+$endif$
+
+$if(teaching)$
+$if(teaching.include-in-cv)$
+$if(teaching.cv-header)$
+\section{$teaching.cv-header$}
+$else$
+\section{Teaching}
+$endif$
+$for(teaching.items)$
+$if(teaching.items.extra)$
+\mycvitem[\cvspace]{$teaching.items.date$}{$teaching.items.role$, $teaching.items.course$ (\textit{$teaching.items.extra$}), $teaching.items.institution$}
+$else$
+\mycvitem[\cvspace]{$teaching.items.date$}{$teaching.items.role$, $teaching.items.course$, $teaching.items.institution$}
+$endif$
+$endfor$
+$endif$
+$endif$
+
+$if(service)$
+$if(service.include-in-cv)$
+$if(service.cv-header)$
+\section{$service.cv-header$}
+$else$
+\section{Community Service}
+$endif$
+$for(service.items)$
+$if(service.items.extra)$
+\mycvitem[\cvspace]{$service.items.date$}{$service.items.activity$ (\textit{$service.items.extra$}), $service.items.institution$}
+$else$
+\mycvitem[\cvspace]{$service.items.date$}{$service.items.activity$, $service.items.institution$}
+$endif$
+$endfor$
+$endif$
+$endif$
+
+$if(certifications)$
+$if(certifications.include-in-cv)$
+$if(certifications.cv-header)$
+\section{$certifications.cv-header$}
+$else$
+\section{Certifications}
+$endif$
+\begin{list}{}{\leftmargin=1em \itemindent=-1em \itemsep=0.25em}
+$for(certifications.items)$
+\item $certifications.items.entry$
+$endfor$
+\end{list}
+$endif$
+$endif$
+
+% --------------------------------------------------------------------------------------------------------- %
+
+%\end{onehalfspacing}
+\end{document}
+

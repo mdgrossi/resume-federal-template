@@ -1,0 +1,267 @@
+---
+format:
+  html:
+    toc: true
+  cv-pdf:
+    output-file: "my-cv"
+    output-ext: "pdf"
+  docx:
+    output-file: "my-cv"
+    output-ext: "docx"
+metadata-files:
+  - _contents.yml
+---
+
+```{python}
+#| label: pysetup
+import scripts.moderncv as cv
+import yaml
+
+with open("_contents.yml", "r") as f:
+  contents = yaml.safe_load(f)
+```
+
+<!-- Header rendering for docx -->
+
+::: {.content-visible when-format="docx"}
+
+<div style="text-align: center">
+
+[Email](mailto:{{< meta contact.email >}}) |  [Website]({{< meta contact.website >}}) | [GitHub](https://github.com/{{< meta contact.github >}}) | [LinkedIn](https://www.linkedin.com/in/{{< meta contact.linkedin >}}) | [ORCID](https://orcid.org/{{< meta contact.orcid >}}) | [ResearchGate](https://www.researchgate.net/profile/{{< meta contact.researchgate >}})
+
+</div>
+
+:::
+
+<!-- Rendering for website -->
+
+::: {.content-visible when-format="html"}
+::: {.column-margin .right-align}
+
+[Email](mailto:{{< meta contact.email >}}) {{< iconify fxemoji:email >}}
+
+[Website]({{< meta contact.website >}}) {{< iconify streamline:web >}}
+
+[GitHub](https://github.com/{{< meta contact.github >}}) {{< iconify mdi:github >}}
+
+[LinkedIn](https://www.linkedin.com/in/{{< meta contact.linkedin >}}) {{< iconify skill-icons:linkedin >}}
+
+[ORCID](https://orcid.org/{{< meta contact.orcid >}}) {{< iconify la:orcid >}}
+
+[ResearchGate](https://www.researchgate.net/profile/{{< meta contact.researchgate >}}) {{< iconify simple-icons:researchgate >}}
+
+:::
+:::
+
+<!-- Education -->
+
+::: {.content-hidden unless-meta="education.include-in-cv"}
+
+## {{< iconify zondicons education >}} {{< meta education.cv-header >}}
+ 
+```{python}
+#| label: education
+#| output: asis
+if 'education' in contents.keys():
+    cv.cveducation(items=contents['education']['items'], abbrev=True)
+```
+
+:::
+
+::: {.content-hidden unless-meta="education.include-in-cv"}
+
+### {{< meta additional-education.cv-header >}}
+
+```{python}
+#| label: additional-education
+#| output: asis
+if 'additional-education' in contents.keys():
+    cv.cvaddedu(items=contents['additional-education']['items'])
+```
+
+:::
+
+<!-- Experience -->
+
+::: {.content-hidden unless-meta="experience.include-in-cv"}
+
+## {{< iconify ic baseline-work >}} {{< meta experience.cv-header >}}
+
+```{python}
+#| label: experience
+#| output: asis
+if 'experience' in contents.keys():
+    cv.cvexperience(items=contents['experience']['items'])
+```
+
+:::
+
+<!-- Awards -->
+
+::: {.content-hidden unless-meta="awards.include-in-cv"}
+
+## {{< iconify hugeicons star-award-01 >}} {{< meta awards.cv-header >}}
+
+```{python}
+#| label: awards
+#| output: asis
+if 'awards' in contents.keys():
+    cv.cventry(items=contents['awards']['items'])
+```
+
+:::
+
+<!-- Memberships -->
+
+::: {.content-hidden unless-meta="memberships.include-in-cv"}
+
+## {{< iconify stash people-group >}} {{< meta memberships.cv-header >}}
+
+```{python}
+#| label: memberships
+#| output: asis
+if 'memberships' in contents.keys():
+    cv.mdlist(items=contents['memberships']['items'], bullets=True)
+```
+
+:::
+
+<!-- Funding -->
+
+::: {.content-hidden unless-meta="fundingawarded.include-in-cv"}
+
+## {{< iconify solar money-bag-bold-duotone >}} {{< meta fundingawarded.cv-header >}}
+
+```{python}
+#| label: funding
+#| output: asis
+if 'fundingawarded' in contents.keys():
+    cv.cventry(items=contents['fundingawarded']['items'])
+```
+
+:::
+
+<!-- Research -->
+
+::: {.content-hidden unless-meta="research.include-in-cv"}
+
+## {{< iconify icon-park cruise >}} {{< meta research.cv-header >}}
+
+```{python}
+#| label: research
+#| output: asis
+if 'research' in contents.keys():
+    cv.cventry(items=contents['research']['items'])
+```
+
+:::
+
+<!-- Publications -->
+
+::: {.content-hidden unless-meta="publications.include-in-cv"}
+
+## {{< iconify fxemoji newspaper >}} {{< meta publications.cv-header >}}
+
+### {{< meta publications.peer-reviewed.cv-subheader >}}
+
+```{python}
+#| label: peer-review
+#| output: asis
+if 'publications' in contents.keys():
+    if 'peer-reviewed' in contents['publications'].keys():
+        cv.mdlist(items=contents['publications']['peer-reviewed']['items'], bullets=False)
+```
+
+### {{< meta publications.proceedings.cv-subheader >}}
+
+```{python}
+#| label: proceedings
+#| output: asis
+if 'publications' in contents.keys():
+    if 'proceedings' in contents['publications'].keys():
+        cv.mdlist(items=contents['publications']['proceedings']['items'], bullets=False)
+```
+
+### {{< meta publications.tech-reports.cv-subheader >}}
+
+```{python}
+#| label: techreports
+#| output: asis
+if 'publications' in contents.keys():
+    if 'tech-reports' in contents['publications'].keys():
+        cv.mdlist(items=contents['publications']['tech-reports']['items'], bullets=False)
+```
+
+### {{< meta publications.cvtalks.cv-subheader >}}
+
+```{python}
+#| label: talks
+#| output: asis
+if 'publications' in contents.keys():
+    if 'cvtalks' in contents['publications'].keys():
+        cv.mdlist(items=contents['publications']['cvtalks']['items'], bullets=False)
+    elif 'talks' in contents['publications'].keys():
+        cv.mdlist(items=contents['publications']['talks']['items'], bullets=False)
+```
+
+:::
+
+<!-- Media -->
+
+::: {.content-hidden unless-meta="media.include-in-cv"}
+
+## {{< iconify qlementine-icons media-16 >}} {{< meta media.cv-header >}}
+
+```{python}
+#| label: media
+#| output: asis
+if 'media' in contents.keys():
+    cv.mdlist(items=contents['media']['items'], bullets=True)
+```
+
+:::
+
+<!-- Teaching -->
+
+::: {.content-hidden unless-meta="teaching.include-in-cv"}
+
+## {{< iconify mdi teaching >}} {{< meta teaching.cv-header >}}
+
+```{python}
+#| label: teaching
+#| output: asis
+if 'teaching' in contents.keys():
+    cv.cvteaching(items=contents['teaching']['items'])
+```
+
+:::
+
+<!-- Service, Outreach, and Leadership -->
+
+::: {.content-hidden unless-meta="service.include-in-cv"}
+
+## {{< iconify ri community-line >}} {{< meta service.cv-header >}}
+
+```{python}
+#| label: outreach
+#| output: asis
+if 'service' in contents.keys():
+    cv.cvservice(items=contents['service']['items'])
+```
+
+:::
+
+<!-- Certifications -->
+
+::: {.content-hidden unless-meta="certifications.include-in-cv"}
+
+## {{< iconify bx certification >}} {{< meta certifications.cv-header >}}
+
+```{python}
+#| label: certifications
+#| output: asis
+if 'certifications' in contents.keys():
+    cv.mdlist(items=contents['certifications']['items'], bullets=True)
+```
+
+:::

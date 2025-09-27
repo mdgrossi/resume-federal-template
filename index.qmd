@@ -1,0 +1,25 @@
+---
+format:
+  html:
+    toc: false
+metadata-files:
+  - _contents.yml
+
+Resume: R&egrave;sum&egrave;
+resume: r&egrave;sum&egrave;
+CV: Curriculum vit&aelig;
+cv: curriculum vit&aelig;
+---
+
+### Click any of the following to preview samples of each {{< meta resume >}} and {{< meta cv >}} format.  
+
+<br>
+
+|             | Website | Portable Document Format | Microsoft Word |              |
+| :---------- | :-: | :-: | :-: | :----------: |
+| **{{< meta Resume >}}** --- for the private sector | [Preview site](resume.qmd) | [pdf]({{< meta resumefilename >}}.pdf) | [docx]({{< meta resumefilename >}}.docx) |  |
+| **{{< meta CV >}}** --- for academia | [Preview site](cv.qmd) | [pdf]({{< meta cvfilename >}}.pdf) | [docx]({{< meta cvfilename >}}.docx) | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |
+
+<br>
+
+#### Instructions for using this template can be found in the [repo README](https://github.com/mdgrossi/resume-quarto-moderncv/blob/main/README.md).

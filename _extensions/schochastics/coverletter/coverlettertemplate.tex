@@ -1,0 +1,87 @@
+% =========================================================================== %
+%
+% DOCUMENT DEFINITION
+%
+% =========================================================================== %
+
+\documentclass[letterpaper,10pt,final]{moderncv}
+
+% Resume theme
+\moderncvtheme[blue]{banking}
+
+% character encoding
+\usepackage[utf8]{inputenc}
+% \usepackage[USenglish]{isodate}
+
+% Hyperlinks
+\usepackage[colorlinks=true, urlcolor=blue]{hyperref}
+
+% Page margins and column widths
+\usepackage[margin=1in]{geometry}
+\setlength{\hintscolumnwidth}{3cm}
+\usepackage{etoolbox, changepage}
+\patchcmd{\makehead}% <cmd>
+  {0.8\textwidth}% <search>
+  {\linewidth}% <replace>
+  {}{}% <success><failure>
+\let\originalrecomputecvlengths\recomputecvlengths
+  \renewcommand*{\recomputecvlengths}{%
+    \originalrecomputecvlengths%
+      \setlength{\quotewidth}{0.94\textwidth}}
+%\recomputelengths
+\usepackage[none]{hyphenat}  % Prevents hyphenation
+\usepackage{setspace} % Line spacing, if desired
+
+% Header information
+\firstname{$author.firstname$}
+$if(author.suffix)$
+\familyname{$author.lastname$\textcolor{gray}{, $author.suffix$}}
+$else$
+\familyname{$author.lastname$}
+$endif$
+$if(subtitle)$
+\title{$subtitle$}
+$endif$
+$if(address)$
+\address{$address.line1$}{$address.line2$}
+$endif$
+$if(contact.email)$
+\email{$contact.email$}
+$endif$
+$if(contact.website)$
+\homepage{$contact.website$}
+$endif$
+$if(contact.linkedin)$
+\social[linkedin]{$contact.linkedin$}
+$endif$
+$if(contact.orcid)$
+\social[orcid]{$contact.orcid$}
+$endif$
+$if(contact.researchgate)$
+\social[researchgate]{$contact.researchgate$}
+$endif$
+
+\begin{document}
+
+$if(coverletter)$
+\recipient{$coverletter.recipient$}{%
+	\begin{minipage}{6cm}
+    $coverletter.address$
+	\end{minipage}
+}
+\date{$coverletter.date$}
+\opening{$coverletter.opening$:}
+\closing{$coverletter.closing$, \vspace{-0.5cm}}
+$if(coverletter.enclosure)$
+\enclosure[Attached]{$coverletter.enclosure$}
+$endif$
+$endif$
+% \makecvtitle
+
+\makelettertitle
+
+$body$
+
+\makeletterclosing
+\end{document}
+

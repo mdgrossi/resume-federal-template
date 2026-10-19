@@ -7,18 +7,15 @@ metadata-files:
 
 Resume: R&egrave;sum&egrave;
 resume: r&egrave;sum&egrave;
-CV: Curriculum vit&aelig;
-cv: curriculum vit&aelig;
 ---
 
-### Click any of the following to preview samples of each {{< meta resume >}} and {{< meta cv >}} format.  
+### Click any of the following to preview samples of each {{< meta resume >}} format.  
 
 <br>
 
 |             | Website | Portable Document Format | Microsoft Word |              |
 | :---------- | :-: | :-: | :-: | :----------: |
-| **{{< meta Resume >}}** --- for the private sector | [Preview site](resume.qmd) | [pdf]({{< meta resumefilename >}}.pdf) | [docx]({{< meta resumefilename >}}.docx) |  |
-| **{{< meta CV >}}** --- for academia | [Preview site](cv.qmd) | [pdf]({{< meta cvfilename >}}.pdf) | [docx]({{< meta cvfilename >}}.docx) | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |
+| **{{< meta Resume >}}** --- for federal jobs | [Preview site](resume.qmd) | [pdf]({{< meta resumefilename >}}.pdf) | [docx]({{< meta resumefilename >}}.docx) |  |
 
 <br>
 

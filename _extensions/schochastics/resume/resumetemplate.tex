@@ -4,7 +4,7 @@
 %
 % =========================================================================== %
 
-\documentclass[letterpaper,10pt,final]{moderncv}
+\documentclass[letterpaper,10pt,final,sans]{moderncv}
 
 % =========================================================================== %
 %
@@ -24,7 +24,7 @@
 \usepackage[utf8]{inputenc}
 
 % Page margins and column widths
-\usepackage[margin=0.6in]{geometry}
+\usepackage[margin=0.5in]{geometry}
 \setlength{\hintscolumnwidth}{3cm}
 \usepackage{etoolbox, changepage}
 \patchcmd{\makehead}% <cmd>
@@ -111,35 +111,10 @@ $if(contact.extrainfo)$
 \extrainfo{$contact.extrainfo$}
 $endif$
 
-$if(summary)$
-\quote{\small{$summary$}}
-$endif$
-
 \begin{document}
 
 \normalsize
 \makecvtitle
-
-$if(skills)$
-$if(skills.include-in-resume)$
-$if(skills.resume-header)$
-\section{$skills.resume-header$}
-$else$
-\section{Skills}
-$endif$
-\vspace{-1em}
-\begin{multicols}{$skills.ncol$}
-$for(skills.items)$
-\cvskillbar{$skills.items.skill$}{$skills.items.years$}{$skills.items.scale$}
-$endfor$
-\end{multicols}
-$endif$
-
-$if(skills.softskills)$
-\cvitem{\textcolor{color1}{$$\triangleright$$} \hspace{0.2em} Soft Skills}{$skills.softskills$}
-\vspace{\cvspace}
-$endif$
-$endif$
 
 $if(experience)$
 $if(experience.include-in-resume)$
@@ -149,10 +124,10 @@ $else$
 \section{Experience}
 $endif$
 $for(experience.items)$
-$if(experience.items.employer)$
-\cventry[\cvspace]{$experience.items.date$}{$experience.items.role$}{$experience.items.employer$ \vspace{0.25em}}{$experience.items.where$}{$experience.items.extra$}{\vspace{0.25em} $experience.items.details$}
+$if(experience.items.federal-series)$
+\cventry[\cvspace]{$experience.items.hours-per-week$ hours per week}{$experience.items.employer$}{$experience.items.role$ ($experience.items.federal-series$) \vspace{0.25em}}{$experience.items.date$}{$experience.items.location$}{\vspace{0.25em} $experience.items.details$}
 $else$
-\cventry[\cvspace]{$experience.items.date$}{$experience.items.role$}{}{$experience.items.where$}{$experience.items.extra$}{\vspace{0.25em} $experience.items.details$}
+\cventry[\cvspace]{$experience.items.hours-per-week$ hours per week}{$experience.items.employer$}{$experience.items.role$ \vspace{0.25em}}{$experience.items.date$}{$experience.items.location$}{\vspace{0.25em} $experience.items.details$}
 $endif$
 $endfor$
 $endif$
@@ -166,10 +141,10 @@ $else$
 \section{Education}
 $endif$
 $for(education.items)$
-$if(education.items.minor)$
-\cventry{$education.items.location$}{$education.items.institution$}{$education.items.degree$, $education.items.major$}{$education.items.date$}{$education.items.extra$}{Minor in $education.items.minor$}
+$if(education.items.coursework)$
+\cventry{$education.items.location$}{$education.items.institution$}{$education.items.degree$, $education.items.major$ ($education.items.credits$ credit hours)}{$education.items.date$}{GPA $education.items.gpa$}{$education.items.coursework$}
 $else$
-\cventry{$education.items.location$}{$education.items.institution$}{$education.items.degree$, $education.items.major$}{$education.items.date$}{$education.items.extra$}{}
+\cventry{$education.items.location$}{$education.items.institution$}{$education.items.degree$, $education.items.major$ ($education.items.credits$ credit hours)}{$education.items.date$}{GPA $education.items.gpa$}{}
 $endif$
 $endfor$
 $endif$

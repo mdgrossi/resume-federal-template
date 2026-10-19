@@ -16,104 +16,56 @@ contact:
   orcid: "orcid"
   researchgate: "ResearchGateUrlHandle"
   extrainfo: "Anything else to highlight up front?"
-summary: "Optional paragraph summary of skills and experience"
 education:
   include-in-resume: true
-  include-in-cv: true
   resume-header: "Education"
-  cv-header: "Education"
+  abbreviate-degrees: true
   items:
     - degree: Bachelor of Arts
       major: Underwater Basket Weaving
+      minor: Diving
       institution: University of Awesomeness
       location: Anylocation, US
-      date: 2000
-      minor: SCUBA Diving
+      date: August 2000
+      credits: 120
+      gpa: 3.90/4.00 
       extra: Graduated top of my class of 1
     - degree: Master of Arts
       major: Upside Down Underwater Basket Weaving
       institution: University of Awesomeness
       location: Anylocation, US
-      date: 2002
-additional-education:
-  include-in-cv: true
-  resume-header: "Additional Higher Education (no degree)"
-  cv-header: "Additional Higher Education (no degree)"
-  items:
-    - major: Yarn making
-      institution: University of Awesomeness
-      location: Anylocation, US
-      date: 2014
-      extra: 3 credit hours
-skills:
-  include-in-resume: true
-  resume-header: Skills
-  ncol: 2 # How many columns should this list span?
-  items:
-    - skill: "Basket weaving"
-      years: "20+ yrs."
-      scale: "1"
-    - skill: "SCUBA"
-      years: "15+ yrs."
-      scale: "0.7"
-    - skill: "Underwater pottery"
-      years: "10 yrs."
-      scale: "0.5"
-    - skill: "Fish identification"
-      years: "4 yrs."
-      scale: "0.2"
-  softskills: going with the flow
+      date: August 2002
+      credits: 65
+      gpa: 3.91/4.00
 experience:
   include-in-resume: true
-  include-in-cv: true
   resume-header: Professional Experience
-  cv-header: Professional Appointments
   items:
     - role: Senior Basket Weaver III
       employer: Underwater Basket Weavers of America
       location: Pacific Ocean
-      extra: 2022 Employee of the Year
+      hours-per-week: 40
+      federal-series: ZP-1301-03
       date: Jan 2010--present
       details: |
         * Design unique and custom baskets according to customers' needs
         * Assemble ~100 made-to-order baskets underwater each year, with 105% 5-star ratings on our customer feedback portal.
-research:
-  include-in-resume: false
-  include-in-cv: true
-  resume-header: "Research Experience"
-  cv-header: "Research Experience"
-  items:
-    - entry: "Developing eco-friendly baskets in underwater environments: combatting biodegradation when weaving baskets underwater"
-      date: 2029-2023
-awards:
-  include-in-resume: true
-  include-in-cv: true
-  resume-header: Awards
-  cv-header: Awards
-  items:
-    - award: Fellow, International Association of Underwater Basket Weavers
-      date: 2012
 publications:
   include-in-resume: true
-  include-in-cv: true
   resume-header: Publications and Presentations
-  cv-header: Publications and Presentations
   peer-reviewed:
     resume-subheader: Peer Reviewed
-    cv-subheader: Peer Reviewed
     items:
       - paper: Paper 1
       - paper: Paper 2
       - paper: Paper 3
   proceedings:
     resume-subheader: Conference Proceedings
-    cv-subheader: Conference Proceedings
     items:
       - paper: Proceedings 1
       - paper: Proceedings 2
   tech-reports:
     resume-subheader: Technical Reports (not peer reviewed)
-    cv-subheader: Technical Reports (not peer reviewed)
     items:
       - paper: Tech Report 1
   talks:
@@ -122,50 +74,5 @@ publications:
       - paper: Talk 1
       - paper: Talk 2
       - paper: Poster 1
-  cvtalks:
-    cv-subheader: Talks and Posters
-    items:
-      - paper: Talk 1
-      - paper: Talk 2
-      - paper: Poster 1
-fundingawarded:
-  include-in-cv: true
-  cv-header: Funding Procurement
-  items:
-    - entry: 'Basket Weaving Innovation Initiative ($100k) "Testing new biofriendly weaving material in underwater environments"'
-      date: 2019
-memberships:
-  include-in-cv: true
-  cv-header: Professional Memberships
-  items:
-    - entry: International Basket Weaving Society
-teaching:
-  include-in-cv: true
-  cv-header: Teaching
-  items:
-    - date: 2019
-      role: Student Teacher
-      course: "ART 101: Introduction to Basketry"
-      institution: University of Awesomeness
-      extra: "'Twas a great class'"
-service:
-  include-in-cv: true
-  cv-header: Community Service
-  items:
-    - date: 1999
-      activity: Founded a basket weaving club
-      institution: University of Awesomeness
-media:
-  include-in-cv: true
-  cv-header: Media Publicity
-  items:
-    - entry: Local news interview about unusual careers (2005)
-certifications:
-  include-in-cv: true
-  cv-header: Certifications
-  items:
-    - entry: SCUBA
-cv-page-numbers: true
 resume-page-numbers: false
 resumefilename: "my-resume"
-cvfilename: "my-cv"

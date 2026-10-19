@@ -2,12 +2,12 @@
 format:
   html:
     toc: true
-  resume-pdf:
-    output-file: "my-resume"
-    output-ext: "pdf"
-  docx:
-    output-file: "my-resume"
-    output-ext: "docx"
+#   resume-pdf:
+#     output-file: "my-resume"
+#     output-ext: "pdf"
+#   docx:
+#     output-file: "my-resume"
+#     output-ext: "docx"
 metadata-files:
   - _contents.yml
 ---
@@ -54,28 +54,6 @@ with open("_contents.yml", "r") as f:
 :::
 :::
 
-::: {.center}
-
-<span style="color:#3873b3;"> *{{< meta summary >}}* </span>
-
-:::
-
-<!-- Skills-->
-
-::: {.content-hidden unless-meta="skills.include-in-resume"}
-
-# {{< iconify solar programming-outline >}} {{< meta skills.resume-header >}}
-
-```{python}
-#| label: skills
-#| output: asis
-if 'skills' in contents.keys():
-    cv.mdskills(items=contents['skills']['items'], icons=False)
-    display(Markdown(f'- **Soft skills:** {contents["skills"]["softskills"]}'))
-```
-
-:::
-
 <!-- Experience -->
 
 ::: {.content-hidden unless-meta="experience.include-in-resume"}
@@ -101,22 +79,7 @@ if 'experience' in contents.keys():
 #| label: education
 #| output: asis
 if 'education' in contents.keys():
-    cv.mdeducation(items=contents['education']['items'], abbrev=True)
-```
-
-:::
-
-<!-- Awards -->
-
-::: {.content-hidden unless-meta="awards.include-in-resume"}
-
-## {{< iconify hugeicons star-award-01 >}} {{< meta awards.resume-header >}}
-
-```{python}
-#| label: awards
-#| output: asis
-if 'awards' in contents.keys():
-    cv.mdlist(items=contents['awards']['items'])
+    cv.mdeducation(items=contents['education']['items'], abbrev=contents['education']['abbreviate-degrees'])
 ```
 
 :::
@@ -125,7 +88,7 @@ if 'awards' in contents.keys():
 
 ::: {.content-hidden unless-meta="publications.include-in-resume"}
 
-## {{< iconify fxemoji newspaper >}} {{< meta publications.resume-header >}}
+# {{< iconify fxemoji newspaper >}} {{< meta publications.resume-header >}}
 
 ### {{< meta publications.peer-reviewed.resume-subheader >}}
 

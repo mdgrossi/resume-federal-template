@@ -1,6 +1,6 @@
 project:
   type: website
-  # execute-dir: project
+  execute-dir: file
   preview:
     port: 4200
 title-block-banner: true
@@ -21,4 +21,4 @@ format:
     css: style.css
     page-layout: full
   docx:
-    page-width: 7.5
+    page-width: 7.

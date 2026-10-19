@@ -5,3 +5,5 @@
 README_files/
 scripts/__pycache__/
 _site/
+
+**/*.quarto_ipynb

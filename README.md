@@ -1,9 +1,6 @@
----
-title: resume-federal-template
-subtitle: "Federal r&#232;sum&#232; for USAJOBS applications easily generated in `pdf`, `html`, and `docx` formats"
-Resume: R&egrave;sum&egrave;
-resume: r&egrave;sum&egrave;
----
+# resume-federal-template
+
+## Federal r&#232;sum&#232; for USAJOBS applications easily generated in `pdf`, `html`, and `docx` formats
 
 ### Overview
 This template can be used to easily create a [USAJOBS](https://www.usajobs.gov/)-compliant professional federal r&#232;sum&#232; for in `pdf`, `html`, and `docx` formats using [Quarto](https://quarto.org/) and [Python](https://www.python.org/):
@@ -141,7 +138,7 @@ Education (*i.e.*, degrees earned) is provided to the `education` category as a 
 | `credits`     | Total number of credit hours earned            |
 | `extra`       | Extra information, such as awards or relevant coursework |
 
-In addition, the `education` category also takes Boolean control flags specifying which document to include as well as header variables to set section headers:
+In addition, the `education` category also takes Boolean control flags specifying whether to include the section as well as a header variable to set the section header:
 
 | Keyword              | Description                                        |
 | :------------------- | :------------------------------------------------- |
@@ -188,7 +185,7 @@ Professional experience is passed as a list of `items`, as in `education` above,
 | `date`        | Dates of employment (month and year)             |
 | `details`     | Description of job duties or accomplishments. This must be a single string, but asterisks (*) will be treated as bullets and will create a list when rendered. See example below. |
 
-In addition, the `experience` category also takes Boolean control flags specifying which document to include as well as header variables to set section headers:
+In addition, the `experience` category also takes a Boolean control flags specifying whether to include the section as well as a header variable to set the section header:
 
 | Keyword             | Description                                        |
 | :------------------ | :------------------------------------------------- |
@@ -215,7 +212,84 @@ experience:
 
 #### Certifications
 
-The USAJOBS 
+The USAJOBS r&#232;sum&#232; builder contains optional **Certificates and licenses**, **Job-related training**, **Language skills**, and **Additional information** sections. These are implemented here as follows.
+
+Certifications are passed as a list of items called `certification`:
+
+```yaml
+certifications:
+  resume-header: Certifications
+  include-in-resume: true
+  items:
+    - certification: Open Water Dive Certification
+    - certification: Deep Water Dive Certification
+```
+
+As above, the section header can be set using `resume-header`, and the section can be excluded altogether by setting `include-in-resume: false`.
+
+
+#### Trainings
+
+Trainings are be passed as a list of items called `training`:
+
+```yaml
+training:
+  resume-header: Training
+  include-in-resume: true
+  items:
+    - certification: Specialty weaving techniques
+```
+
+As above, the section header can be set using `resume-header`, and the section can be excluded altogether by setting `include-in-resume: false`.
+
+#### Language Proficiencies
+
+Language proficiencies are passed as a list of `items`, as in `education` above, with the following entries:
+
+| Keyword                | Description                                   |
+| :--------------------- | :-------------------------------------------- |
+| `language`             | Name of language.                             |
+| `speaking-proficiency` | Spoken language skill level. Generally one of either "None", "Novice", Intermediate", or "Advanced"                           |
+| `writing-proficiency`  | Written language skill level. Generally one of either "None", "Novice", Intermediate", or "Advanced"                           |
+| `reading-proficiency`  | Read language skill level. Generally one of either "None", "Novice", Intermediate", or "Advanced"                           |
+
+In addition, the `language` category also takes a Boolean control flags specifying whether to include the section as well as a header variable to set the section header:
+
+| Keyword             | Description                                        |
+| :------------------ | :------------------------------------------------- |
+| `include-in-resume` | (Boolean) If `true`, this section will appear in the r&egrave;sum&egrave;. If `false` or omitted altogether, it will be excluded. |
+| `resume-header`     | Section header text as it should appear in the r&egrave;sum&egrave; |
+
+For example:
+
+```yaml
+languages:
+  resume-header: Languages
+  include-in-resume: true
+  items:
+    - language: English
+      speaking-proficiency: intermediate
+      writing-proficiency: novice
+      reading-proficiency: advanced
+```
+
+#### Extra Information
+
+Extra information can be added using the `extra` key as follows:
+
+```yaml
+extra:
+  resume-header: Additional Information
+  include-in-resume: true
+  text: | 
+    I can do a lot of things well.
+
+    * Like make resumes
+    * And list things I do well
+```
+
+As above, the section header can be set using `resume-header`, and the section can be excluded altogether by setting `include-in-resume: false`. Note that this field is treated as a freeform text block. Bulleted and non-bulleted text should be supported, as demonstrated above, but more advanced attempts at formatting may fail without [template modification](#customization).
+
 
 #### Publications
 
@@ -231,7 +305,7 @@ publications:
       - paper: "Paper 3"
 ```
 
-In addition, the `publications` category also takes Boolean control flags specifying which document to include in as well as header variables to set the section headers:
+In addition, the `publications` category also takes a Boolean control flags specifying whether to include the section as well as header and subheader variables to set the section and subsection headers, respectively:
 
 | Keyword             | Description                                        |
 | :------------------ | :------------------------------------------------- |

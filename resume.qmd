@@ -141,7 +141,7 @@ if 'languages' in contents.keys():
 
 ::: {.content-hidden unless-meta="extra.include-in-resume"}
 
-# {{< iconify fxemoji newspaper >}} {{< meta extra.resume-header >}}
+# {{< iconify akar-icons info-fill >}} {{< meta extra.resume-header >}}
 
 ```{python}
 #| label: extra

@@ -74,5 +74,31 @@ publications:
       - paper: Talk 1
       - paper: Talk 2
       - paper: Poster 1
+trainings:
+  resume-header: Training
+  include-in-resume: true
+  items:
+    - training: Specialty weaving techniques
+certifications:
+  resume-header: Certifications
+  include-in-resume: true
+  items:
+    - certification: Open Water Dive Certification
+languages:
+  resume-header: Languages
+  include-in-resume: true
+  items:
+    - language: English
+      speaking-proficiency: advanced
+      writing-proficiency: advanced
+      reading-proficiency: advanced
+extra:
+  resume-header: Additional Information
+  include-in-resume: true
+  text: | 
+    I can do a lot of things well.
+
+    * Like make resumes
+    * And list things I do well
 resume-page-numbers: false
 resumefilename: "my-resume"

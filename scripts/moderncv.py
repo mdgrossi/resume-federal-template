@@ -132,6 +132,36 @@ def mdexperience(items):
             display(Markdown(f'| **{item["role"]}** ({item["federal-series"]}) <br> *{item["employer"]}, {item["location"]}* | **{item["date"]}** <br> *{item["hours-per-week"]} hours per week* |\n'.replace('****', '')))
         display(Markdown(item["details"]))
 
+def mdlanguages(items):
+    """Generate markdown syntax for a list of 
+    dict `items` as described below. Note that this returns a string of
+    code needed to create a table, not a table itself. This is used within a
+    Quarto markdown files to display a table when that file is rendered.
+    
+    ARGUMENTS
+    ---------
+    items: list of dictionaries each containing the following items:
+        {
+        'language': str, the name of the skill to be displayed,
+        'spoken-proficiency': str, level of spoken proficiency (usually "none", "novice", "intermediate", or "advanced"),
+        'written-proficiency': str, level of writing proficiency (usually "none", "novice", "intermediate", or "advanced"),
+        'read-proficiency: str, level of reading proficiency (usually "none", "novice", "intermediate", or "advanced")
+        }
+        Normally, this dictionary would be from the YAML front matter of a
+        Quarto markdown file.
+    """
+    
+    entry = ''.join(f'- **{s["language"]}:** [Speaking: {s["speaking-proficiency"]} | Writing: {s["writing-proficiency"]} | Reading: {s["reading-proficiency"]}]{{style="color: grey"}}\n' for i,s in enumerate(items))
+
+    # De-LaTeXify
+    entry = entry.replace('\\', '')
+
+    # Generate table
+    display(Markdown(entry))
+
+def mdfreeform(text):
+    display(Markdown(text['text']))
+
 def cventry(items):
     """Generates markdown syntax for an html table creating a CV entry with
     date on left and entry description on right. Note that this returns a

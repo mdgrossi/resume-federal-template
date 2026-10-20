@@ -2,12 +2,13 @@
 format:
   html:
     toc: true
-#   resume-pdf:
-#     output-file: "my-resume"
-#     output-ext: "pdf"
-#   docx:
-#     output-file: "my-resume"
-#     output-ext: "docx"
+  resume-pdf:
+    output-file: "my-resume"
+    output-ext: "pdf"
+    keep-tex: false
+  docx:
+    output-file: "my-resume"
+    output-ext: "docx"
 metadata-files:
   - _contents.yml
 ---
@@ -80,6 +81,74 @@ if 'experience' in contents.keys():
 #| output: asis
 if 'education' in contents.keys():
     cv.mdeducation(items=contents['education']['items'], abbrev=contents['education']['abbreviate-degrees'])
+```
+
+:::
+
+
+<!-- Training -->
+
+::: {.content-hidden unless-meta="trainings.include-in-resume"}
+
+# {{< iconify emojione-monotone school >}} {{< meta trainings.resume-header >}}
+
+```{python}
+#| label: training
+#| output: asis
+if 'trainings' in contents.keys():
+    if contents['trainings']['include-in-resume']:
+        cv.mdlist(items=contents['trainings']['items'])
+```
+
+:::
+
+
+<!-- Certifications -->
+
+::: {.content-hidden unless-meta="certifications.include-in-resume"}
+
+# {{< iconify iconamoon certificate-badge-fill >}} {{< meta certifications.resume-header >}}
+
+```{python}
+#| label: certs
+#| output: asis
+if 'certifications' in contents.keys():
+    if contents['certifications']['include-in-resume']:
+        cv.mdlist(items=contents['certifications']['items'])
+```
+
+:::
+
+
+<!-- Languages -->
+
+::: {.content-hidden unless-meta="languages.include-in-resume"}
+
+# {{< iconify subway world-1 >}} {{< meta languages.resume-header >}}
+
+```{python}
+#| label: languages
+#| output: asis
+if 'languages' in contents.keys():
+    if contents['languages']['include-in-resume']:
+        cv.mdlanguages(items=contents['languages']['items'])
+```
+
+:::
+
+
+<!-- Extra Info -->
+
+::: {.content-hidden unless-meta="extra.include-in-resume"}
+
+# {{< iconify fxemoji newspaper >}} {{< meta extra.resume-header >}}
+
+```{python}
+#| label: extra
+#| output: asis
+if 'extra' in contents.keys():
+    if contents['extra']['include-in-resume']:
+        cv.mdfreeform(text=contents['extra'])
 ```
 
 :::

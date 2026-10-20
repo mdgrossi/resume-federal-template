@@ -59,6 +59,9 @@ $endif$
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{8pt}\setlength{\parskip}{0pt}}
 
+% Freeform text box for extra info
+\newsavebox{\extrabox}
+
 % Skills graphics
 % Renders a progress-bar to indicate a certain skill in percent.
 % param 1: name of the skill / tech / etc.
@@ -150,19 +153,70 @@ $endfor$
 $endif$
 $endif$
 
-$if(awards)$
-$if(awards.include-in-resume)$
-$if(awards.resume-header)$
-\section{$awards.resume-header$}
+$if(trainings)$
+$if(trainings.include-in-resume)$
+$if(trainings.resume-header)$
+\section{$trainings.resume-header$}
 $else$
-\section{Awards}
+\section{Trainings}
 $endif$
 \small
 \begin{itemize}
-$for(awards.items)$
-\item $awards.items.award$
+$for(trainings.items)$
+\item $trainings.items.training$
 $endfor$
 \end{itemize}
+$endif$
+$endif$
+
+$if(certifications)$
+$if(certifications.include-in-resume)$
+$if(certifications.resume-header)$
+\section{$certifications.resume-header$}
+$else$
+\section{Certifications}
+$endif$
+\small
+\begin{itemize}
+$for(certifications.items)$
+\item $certifications.items.certification$
+$endfor$
+\end{itemize}
+$endif$
+$endif$
+
+$if(languages)$
+$if(languages.include-in-resume)$
+$if(langauges.resume-header)$
+\section{$languages.resume-header$}
+$else$
+\section{Language Skills}
+$endif$
+\small
+\begin{itemize}
+$for(languages.items)$
+\item \textbf{$languages.items.language$:} Speaking: $languages.items.speaking-proficiency$ | Writing: $languages.items.writing-proficiency$ | Reading: $languages.items.reading-proficiency$
+$endfor$
+\end{itemize}
+$endif$
+$endif$
+
+$if(extra)$
+$if(extra.include-in-resume)$
+$if(extra.resume-header)$
+\section{$extra.resume-header$}
+$else$
+\section{Extra Information}
+$endif$
+\small
+\begin{lrbox}{\extrabox}%
+\begin{minipage}[t]{\maincolumnwidth}
+\renewcommand{\quote}[1]{#1\par}
+\renewcommand{\tightlist}{\setlength{\itemsep}{0.25em}\setlength{\parsep}{0pt}\setlength{\parskip}{0pt}}
+$extra.text$
+\end{minipage}%
+\end{lrbox}
+\cvitem{}{\usebox{\extrabox}}
 $endif$
 $endif$
 

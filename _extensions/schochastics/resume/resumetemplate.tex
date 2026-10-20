@@ -130,11 +130,15 @@ $else$
 \section{Experience}
 $endif$
 $for(experience.items)$
+\notblank{$experience.items.role$}{%
 $if(experience.items.federal-series)$
 \cventry[\cvspace]{$experience.items.hours-per-week$ hours per week}{$experience.items.employer$}{$experience.items.role$ ($experience.items.federal-series$) \vspace{0.25em}}{$experience.items.date$}{$experience.items.location$}{\vspace{0.25em} $experience.items.details$}
 $else$
 \cventry[\cvspace]{$experience.items.hours-per-week$ hours per week}{$experience.items.employer$}{$experience.items.role$ \vspace{0.25em}}{$experience.items.date$}{$experience.items.location$}{\vspace{0.25em} $experience.items.details$}
 $endif$
+}{%
+\cventry[\cvspace]{}{}{}{}{}{\vspace{0.25em} $experience.items.details$}
+}
 $endfor$
 $endif$
 $endif$

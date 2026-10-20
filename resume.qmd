@@ -15,7 +15,6 @@ metadata-files:
 
 ```{python}
 #| label: pysetup
-from IPython.display import Markdown
 import scripts.moderncv as cv
 import yaml
 

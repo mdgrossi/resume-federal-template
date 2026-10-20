@@ -126,10 +126,16 @@ def mdexperience(items):
 
         display(Markdown('|  |  |'))
         display(Markdown('| :--- | ---: |'))
-        if 'extra' in item.keys():
-            display(Markdown(f'| **{item["role"]}** ({item["federal-series"]}) <br> *{item["employer"]}, {item["location"]}* <br> {item["extra"]} | **{item["date"]}** <br> *{item["hours-per-week"]} hours per week* |\n'.replace('****', '')))
+        if 'federal-series' in item:
+            if 'extra' in item:
+                display(Markdown(f'| **{item["role"]}** ({item["federal-series"]}) <br> *{item["employer"]}, {item["location"]}* <br> {item["extra"]} | **{item["date"]}** <br> *{item["hours-per-week"]} hours per week* |\n'.replace('****', '')))
+            else:
+                display(Markdown(f'| **{item["role"]}** ({item["federal-series"]}) <br> *{item["employer"]}, {item["location"]}* | **{item["date"]}** <br> *{item["hours-per-week"]} hours per week* |\n'.replace('****', '')))
         else:
-            display(Markdown(f'| **{item["role"]}** ({item["federal-series"]}) <br> *{item["employer"]}, {item["location"]}* | **{item["date"]}** <br> *{item["hours-per-week"]} hours per week* |\n'.replace('****', '')))
+            if 'extra' in item:
+                display(Markdown(f'| **{item["role"]}** <br> *{item["employer"]}, {item["location"]}* <br> {item["extra"]} | **{item["date"]}** <br> *{item["hours-per-week"]} hours per week* |\n'.replace('****', '')))
+            else:
+                display(Markdown(f'| **{item["role"]}** <br> *{item["employer"]}, {item["location"]}* | **{item["date"]}** <br> *{item["hours-per-week"]} hours per week* |\n'.replace('****', '')))
         display(Markdown(item["details"]))
 
 def mdlanguages(items):

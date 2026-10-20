@@ -1,6 +1,9 @@
-# resume-federal-template
-
-## Federal r&#232;sum&#232; for USAJOBS applications easily generated in `pdf`, `html`, and `docx` formats
+---
+title: resume-federal-template
+subtitle: "Federal r&#232;sum&#232; for USAJOBS applications easily generated in `pdf`, `html`, and `docx` formats"
+Resume: R&egrave;sum&egrave;
+resume: r&egrave;sum&egrave;
+---
 
 ### Overview
 This template can be used to easily create a [USAJOBS](https://www.usajobs.gov/)-compliant professional federal r&#232;sum&#232; for in `pdf`, `html`, and `docx` formats using [Quarto](https://quarto.org/) and [Python](https://www.python.org/):
@@ -210,6 +213,9 @@ experience:
         * Assemble ~100 made-to-order baskets underwater each year, with 105% 5-star ratings on our customer feedback portal.
 ```
 
+#### Certifications
+
+The USAJOBS 
 
 #### Publications
 
